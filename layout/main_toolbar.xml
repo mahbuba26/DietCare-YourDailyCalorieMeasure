@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    >
+
+    <ImageView
+        android:layout_width="42dp"
+        android:layout_height="49dp"
+        android:onClick="ClickMenu"
+        android:src="@drawable/ic_menu" />
+
+    <TextView
+        android:layout_width="341dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/ass"
+        android:gravity="center_horizontal"
+        android:text="Healthy Food Diet"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+
+</LinearLayout>

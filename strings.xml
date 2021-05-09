@@ -1,0 +1,135 @@
+<resources>
+    <string name="app_name">DIETcare</string>
+    <string name="chooser">Send message via . . .</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="age">Age</string>
+    <string name="height_feet">Height (feet only)</string>
+    <string name="height_inches">Height (Inches)</string>
+    <string name="weight_pounds">Weight (lbs)</string>
+    <string name="go_button">Go</string>
+
+
+    <string name="quantity" />
+    <string name="Food_Item" />
+    <string name="calculate" />
+    <string-array name="Rec">
+        <item>Carbohydrate</item>
+        <item>Protein</item>
+        <item>Fat</item>
+        <item>Vitamin</item>
+        <item>Mineral</item>
+        <item>Water</item>
+
+    </string-array>
+    <string-array name="itemcal">
+        <item>Porridge</item>
+        <item>Cake</item>
+        <item>Egg boiled</item>
+        <item>Egg Poached</item>
+        <item>Egg Fried</item>
+        <item>Egg Omelet</item>
+        <item>Bread Slice</item>
+        <item>Bread Slice with butter</item>
+        <item>Chapati</item>
+        <item>Puri</item>
+        <item>Paratha</item>
+        <item>Subji</item>
+        <item>Idli</item>
+        <item>Dosa Plain</item>
+        <item>Dosa Masala</item>
+        <item>Sambhar</item>
+        <item>Cooked Plain Rice</item>
+        <item>Cooked Fried Rice</item>
+        <item>Nan</item>
+        <item>Dal</item>
+        <item>Curd</item>
+        <item>Vegetable Curry</item>
+        <item>Meat Curry</item>
+        <item>Salad</item>
+        <item>Papad</item>
+        <item>Cutlet</item>
+        <item>Pickle</item>
+        <item>Soup</item>
+        <item>Tea without sugar</item>
+        <item>Coffee without sugar</item>
+        <item>Tea with sugar</item>
+        <item>Coffee with sugar</item>
+        <item>Milk with sugar</item>
+        <item>Milk with sugar and horlicks</item>
+        <item>Milk without sugar</item>
+        <item>Fruit Juice</item>
+        <item>Soft Drinks</item>
+        <item>Beer</item>
+        <item>Soda</item>
+        <item>Alcohol Neat</item>
+        <item>Jam</item>
+        <item>Butter</item>
+        <item>Ghee</item>
+        <item>Sugar</item>
+        <item>Biscuit</item>
+        <item>Fried Nuts</item>
+        <item>Pudding</item>
+        <item>Ice-cream</item>
+        <item>Milk-shake</item>
+        <item>Wafers</item>
+        <item>Samosa</item>
+        <item>Bhel-puri</item>
+        <item>Pani-puri</item>
+        <item>Kebab</item>
+        <item>Indian Sweets</item>
+        <item>Potato Fried</item>
+        <item>Potato Mash</item>
+        <item>Sandwich</item>
+        <item>Hamburger</item>
+        <item>Spaghetti and Meat</item>
+        <item>Fried Chicken</item>
+        <item>Chinese Noodles</item>
+        <item>Fried Rice</item>
+        <item>Pizza</item>
+        <item>Sausage</item>
+        <item>Apple</item>
+        <item>Banana</item>
+        <item>Blackberries</item>
+        <item>Blueberries</item>
+        <item>Cabbage</item>
+        <item>Carrot</item>
+        <item>Cherries</item>
+        <item>Corn</item>
+        <item>Cucumber</item>
+        <item>Grapefruit</item>
+        <item>Grapes</item>
+        <item>Green Beans</item>
+        <item>Kiwi</item>
+        <item>Mango</item>
+        <item>Onion</item>
+        <item>Orange</item>
+        <item>Papaya</item>
+        <item>Peach</item>
+        <item>Pear</item>
+        <item>Peas</item>
+        <item>Pineapple</item>
+        <item>Plum</item>
+        <item>Raspberries</item>
+        <item>Potato</item>
+        <item>Biryani veg</item>
+        <item>Biryani mutton</item>
+        <item>Carrot Halwa</item>
+        <item>Jalebi</item>
+        <item>Kheer</item>
+        <item>Rasgulla</item>
+        <item>Mineral Water</item>
+        <item>Cereal Bar</item>
+        <item>Arugula</item>
+        <item>Honey dew Melon</item>
+        <item>Bulgar</item>
+        <item>Soba Noodles</item>
+        <item>Wheat Bran</item>
+        <item>Rice Cake</item>
+        <item>Mussels</item>
+        <item>Cod</item>
+        <item>Thyme</item>
+    </string-array>
+</resources>

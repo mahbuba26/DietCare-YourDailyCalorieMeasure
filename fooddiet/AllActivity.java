@@ -1,0 +1,33 @@
+package com.example.fooddiet;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
+public class AllActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_all);
+    }
+
+    public void buttonClick(View view){
+        Intent intent =new Intent(AllActivity.this,MainActivity.class);
+        startActivity(intent);
+    }
+    public void buttonClick2(View view){
+        Intent intent =new Intent(AllActivity.this,AnalysisActivity.class);
+        startActivity(intent);
+    }
+    public void buttonClick3(View view){
+        Intent intent =new Intent(AllActivity.this,FoodActivity.class);
+        startActivity(intent);
+    }
+    public void buttonClick4(View view){
+        Intent intent =new Intent(AllActivity.this,graph.class);
+        startActivity(intent);
+    }
+}
