@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1040412869312",
+    "project_id": "dietcare-4a734",
+    "storage_bucket": "dietcare-4a734.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1040412869312:android:959fb4d0d638ed6ccc6325",
+        "android_client_info": {
+          "package_name": "com.mahbuba.dietcare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1040412869312-fhm01hmekqhopncidec5qkkv2mb3ug2l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM-PqHPzJ-Z8n9mFVVck5SJGGgcX68JbE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1040412869312-fhm01hmekqhopncidec5qkkv2mb3ug2l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,2 @@
+rootProject.name='DIETcare'
+include ':app'
