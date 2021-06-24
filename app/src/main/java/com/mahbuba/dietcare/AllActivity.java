@@ -27,7 +27,7 @@ public class AllActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void buttonClick4(View view){
-        Intent intent =new Intent(AllActivity.this,GoActivity.class);
+        Intent intent =new Intent(AllActivity.this,graph.class);
         startActivity(intent);
     }
 }

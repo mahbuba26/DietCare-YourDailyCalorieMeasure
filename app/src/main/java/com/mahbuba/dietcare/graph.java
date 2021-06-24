@@ -1,225 +1,193 @@
 package com.mahbuba.dietcare;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.PointsGraphSeries;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
-import static android.widget.Toast.LENGTH_LONG;
+import java.util.Date;
 
 public class graph extends AppCompatActivity {
     DrawerLayout drawerLayout;
     private TextView edt;
-    dietclass dbhelper;
+    FirebaseAuth mAuth;
+    FirebaseDatabase database;
+    DatabaseReference reference;
+    PointsGraphSeries<DataPoint> series;
+    SimpleDateFormat sdf = new SimpleDateFormat("dd");
+    GraphView graphView;
+    //  LineGraphSeries series;
 
 
     private static final String TAG = "graph";
-    PointsGraphSeries<DataPoint> xySeries;
-
-    private Button btnAddPt;
-    private EditText mX, mY;
-    GraphView mScatterPlot;
-
-    private ArrayList<XYValue> xyValueArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_graph);
+        setContentView(R.layout.activity_graph2);
 
+        // initializing our variable for graph view.
+        graphView = findViewById(R.id.scatterPlot);
         drawerLayout = findViewById(R.id.drawer_layout);
-
-        //edt=(TextView)findViewById(R.id.edt);
-        btnAddPt = (Button) findViewById(R.id.btnAddPt);
-        mX = (EditText) findViewById(R.id.numX);
-        mY = (EditText) findViewById(R.id.numY);
-        mScatterPlot = (GraphView) findViewById(R.id.scatterPlot);
-        xyValueArray = new ArrayList<>();
-
-        String user = getIntent().getStringExtra("keyname");
+        //PointsGraphSeries<DataPoint> series = new PointsGraphSeries<>();
+        series = new PointsGraphSeries<>();
+        // below line is to add series
+        // to our graph view.
+        graphView.addSeries(series);
+        //     series = new LineGraphSeries();
+        //      graphView.addSeries(series);
+        //    mAuth=FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+        //reference = database.getReference("graph");
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        String userID = user.getUid();
+        reference = database.getReference(userID);
 
         Calendar calendar = Calendar.getInstance();
         String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
-        TextView textViewDate = findViewById(R.id.text_view_date);
-        textViewDate.setText(currentDate);
-        float myLat;
-        float myLong;
-        Intent intent = getIntent();
+        //  TextView textViewDate = findViewById(R.id.textView56);
+        //    textViewDate.setText(currentDate);
 
-        if (intent != null) {
-            //HAVE TO EAT CALORIE
-            myLat = intent.getFloatExtra("keyname", 0);
-
-            for (int i = 0; i < 30; i++) {
-                xyValueArray.add(new XYValue(i, myLat));
-            }
-        }
-
-        Intent intent2 = getIntent();
-        // myLong = intent.getDoubleExtra("keyname2", 0);
-        if (intent2 != null) {
-            //EATEN CALORIE
-            myLong = intent.getFloatExtra("keyname2", 0);
-            // Toast.makeText(graph.this, "You must fill out both fields!", Toast.LENGTH_SHORT).show();
-
-            for (int i = 0; i < 30; i++) {
-                xyValueArray.add(new XYValue(i, myLong));
-            }
-        }
-        // }
+        String id = reference.push().getKey();
+        int y = (int) AnalysisActivity.getValue();
+        long x = new Date().getTime();
 
 
-        try {
-
-
-            dbhelper = new dietclass(this);
-
-
-            xySeries = new PointsGraphSeries<>();
-
-            btnAddPt.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    Intent intent = new Intent(graph.this, AnalysisActivity.class);
-                    startActivity(intent);
-                    if (!mX.getText().toString().equals("") && !mY.getText().toString().equals("")) {
-
-                        double x = Double.parseDouble(mX.getText().toString());
-                        double y = Double.parseDouble(mY.getText().toString());
-                        Log.d(TAG, "onClick: Adding a new point.(x,y):(" + x + "," + y + ")");
-                        xyValueArray.add(new XYValue(x, y));
-
-                    /*for(int i=0;i<30;i++){
-                            xyValueArray.add(i,user);
-                    }
-
-                    init();*/
-
-                        if (xyValueArray.size() != 0) {
-                            createScatterPlot();
-                        }
-                    } else {
-                        //Toast.makeText(graph.this, "You must fill out both fields!", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-
-            if (xyValueArray.size() != 0) {
-                createScatterPlot();
-            } else {
-                Log.d(TAG, "oncreate: No data to plot .");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-        private void createScatterPlot () {
-            Log.d(TAG, "createScatterPlot : Creating scatter plot .");
-            xyValueArray = sortArray(xyValueArray);
-            for (int i = 0; i < xyValueArray.size(); i++) {
-                try {
-                    double x = xyValueArray.get(i).getX();
-                    double y = xyValueArray.get(i).getY();
-                    xySeries.appendData(new DataPoint(x, (y)), true, 1000);
-
-                } catch (IllegalArgumentException e) {
-                    Log.e(TAG, "createScatterPlot: IllegalArgumentException: " + e.getMessage());
-                }
-            }
-            xySeries.setShape(PointsGraphSeries.Shape.POINT);
-            xySeries.setColor(Color.MAGENTA);
-            xySeries.setSize(10f);
-
-            mScatterPlot.getViewport().setScalable(true);
-            mScatterPlot.getViewport().setScalableY(true);
-            mScatterPlot.getViewport().setScrollable(true);
-            mScatterPlot.getViewport().setScrollableY(true);
-
-            mScatterPlot.getViewport().setYAxisBoundsManual(true);
-            mScatterPlot.getViewport().setMaxX(30);
-            mScatterPlot.getViewport().setMinX(0);
-
-
-            mScatterPlot.getViewport().setYAxisBoundsManual(true);
-            mScatterPlot.getViewport().setMaxY(5000);
-            mScatterPlot.getViewport().setMinY(0);
-
-            mScatterPlot.addSeries(xySeries);
-
-        }
-        private ArrayList<XYValue> sortArray (ArrayList < XYValue > array) {
-            int factor = Integer.parseInt(String.valueOf(Math.round(Math.pow(array.size(), 2))));
-            int m = array.size() - 1;
-            int count = 0;
-            Log.d(TAG, "sortArray:Sorting the XYArray. ");
-
-            while (true) {
-                m--;
-                if (m <= 0) {
-                    m = array.size() - 1;
-                }
-                Log.d(TAG, "sortArray:m=" + m);
-                try {
-                    double tempY = array.get(m - 1).getY();
-                    double tempX = array.get(m - 1).getX();
-                    if (tempX > array.get(m).getX()) {
-                        array.get(m - 1).setY(array.get(m).getY());
-                        array.get(m).setY(tempY);
-                        array.get(m - 1).setX(array.get(m).getX());
-                        array.get(m).setX(tempX);
-                    } else if (tempX == array.get(m).getX()) {
-                        count++;
-                        Log.d(TAG, "sortArray: count = " + count);
-                    } else if (array.get(m).getX() > array.get(m - 1).getX()) {
-                        count++;
-                        Log.d(TAG, "sortArray: count = " + count);
-                    }
-                    //break when factorial is done
-                    if (count == factor) {
-                        break;
-                    }
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    Log.e(TAG, "sortArray: ArrayIndexOutOfBoundsException. Need more than 1 data point to create Plot." +
-                            e.getMessage());
-                    break;
-                }
-
-
-            }
-            return array;
-        }
-
+        graphView.getGridLabelRenderer().setNumHorizontalLabels(5);
 
     }
 
 
+    @Override
+    protected void onStart() {
+        super.onStart();
 
+        reference.limitToLast(30).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapShot) {
+
+                DataPoint[] db = new DataPoint[(int) dataSnapShot.getChildrenCount()];
+                int index = 0;
+
+                for (DataSnapshot myDataSnapShot : dataSnapShot.getChildren()) {
+                    Pointvalue pointvalue = myDataSnapShot.getValue(Pointvalue.class);
+
+                    db[index] = new DataPoint(pointvalue.getX(), pointvalue.getTotal());
+                    index++;
+
+                }
+                series.resetData(db);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+        graphView.getViewport().setXAxisBoundsManual(true);
+        graphView.getViewport().setMaxX(30);
+        graphView.getViewport().setMinX(0);
+
+
+        graphView.getViewport().setYAxisBoundsManual(true);
+        graphView.getViewport().setMaxY(10000);
+        graphView.getViewport().setMinY(0);
+
+        // below line is to activate
+        // horizontal scrolling.
+        graphView.getViewport().setScrollable(true);
+
+        // below line is to activate horizontal
+        // zooming and scrolling.
+        graphView.getViewport().setScalable(true);
+
+        // below line is to activate vertical and
+        // horizontal zoom with scrolling.
+        graphView.getViewport().setScalableY(true);
+
+        // below line is to activate vertical scrolling.
+        graphView.getViewport().setScrollableY(true);
+
+        // below line is to set shape
+        // for the point of graph view.
+        series.setShape(PointsGraphSeries.Shape.POINT);
+
+        // below line is to set
+        // the size of our shape.
+        series.setSize(12);
+
+        // below line is to add color
+        // to our shape of graph view.
+        series.setColor(Color.MAGENTA);
+    }
+
+    public void ClickMenu(View view){
+        FoodActivity.openDrawer(drawerLayout);
+
+    }
+
+    public void ClickLogo(View view){
+        FoodActivity.closeDrawer(drawerLayout);
+    }
+
+    public void ClickReminder(View view){
+        // FoodActivity.redirectActivity(this,SetActivity.class);
+    }
+    public void ClickFriends(View view){
+        FoodActivity.redirectActivity(this,InviteActivity.class);
+    }
+
+    public void ClickHome(View view){
+        FoodActivity.redirectActivity(this,Profile.class);
+    }
+
+    public void ClickDashboard(View view){
+        FoodActivity.redirectActivity(this,AnalysisActivity.class);
+    }
+
+    public void ClickGraph(View view){
+        recreate();}
+    public void ClickAboutUs(View view){
+        FoodActivity.redirectActivity(this,FoodActivity.class);
+    }
+
+    public void ClickLogout(View view){
+        FoodActivity.logout(this);
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+        finish();
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        FoodActivity.closeDrawer(drawerLayout);
+    }
+
+}

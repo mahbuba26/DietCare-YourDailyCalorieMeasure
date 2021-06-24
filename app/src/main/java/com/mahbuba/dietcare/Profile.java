@@ -189,7 +189,7 @@ calorie.setOnClickListener(new View.OnClickListener() {
     }
 
     public void ClickGraph(View view){
-        FoodActivity.redirectActivity(this,GoActivity.class);
+        FoodActivity.redirectActivity(this,graph.class);
     }
 
     public void ClickAboutUs(View view){

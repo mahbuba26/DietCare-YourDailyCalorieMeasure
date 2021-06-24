@@ -41,15 +41,18 @@ public class CalorieActivity extends AppCompatActivity {
                 if (documentSnapshot.exists()) {
                   //  BMR1.setText("BMR :  " + documentSnapshot.getString("bmr_inter"));
                     bmr_value=documentSnapshot.getString("bmr_inter");
+                   // float a= (float) (Float.parseFloat(bmr_value)*1.20);
+                    //float b= (float) (Float.parseFloat(bmr_value)*1.3750);
+                    //(float)(Float.parseFloat(bmr_value)*1.375)
                     //BMR1.setText("BMR :  " + bmr_value);
                     //BMR2.setText("BMR :  " + Double.parseDouble(bmr_value)*1.2);
                     //BMR3.setText("BMR :  " + Double.parseDouble(bmr_value)*1.375);
                     //BMR4.setText("BMR :  " + Double.parseDouble(bmr_value)*1.55);
 
-                    BMR1.setText("If you don't do any exercise,\nthen you need  '" +Double.parseDouble(bmr_value)*1.20 + "' calorie daily" );
-                    BMR2.setText("If you do exercise '1-3 day/week' , \nthen you need  '" + Double.parseDouble(bmr_value)*1.375 + "' calorie daily" );
-                    BMR3.setText("If you do exercise '3-5 day/week' ,\nthen you need  '" + Double.parseDouble(bmr_value)*1.55 + "' calorie daily" );
-                    BMR4.setText("If you do exercise '6-7 day/week' ,\nthen you need  '" + Double.parseDouble(bmr_value)*1.725 + "' calorie daily" );
+                    BMR1.setText("If you don't do any exercise,\nthen you need   " + (float) (Float.parseFloat(bmr_value)*1.200) + " calorie daily" );
+                    BMR2.setText("If you do exercise 1-3 day/week , \nthen you need  " + (float) (Float.parseFloat(bmr_value)*1.375) + " calorie daily" );
+                    BMR3.setText("If you do exercise 3-5 day/week ,\nthen you need  " + (float)(Float.parseFloat(bmr_value)*1.550) + " calorie daily" );
+                    BMR4.setText("If you do exercise 6-7 day/week ,\nthen you need  " + (float)(Float.parseFloat(bmr_value)*1.725) + " calorie daily" );
 
                 }else {
                     Log.d("tag", "onEvent: Document do not exists");

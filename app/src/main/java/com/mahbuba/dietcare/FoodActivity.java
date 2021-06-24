@@ -71,7 +71,7 @@ DrawerLayout drawerLayout;
     }
 
     public void ClickGraph(View view){
-       redirectActivity(this,GoActivity.class);
+       redirectActivity(this,graph.class);
     }
 
     public void ClickAboutUs(View view){

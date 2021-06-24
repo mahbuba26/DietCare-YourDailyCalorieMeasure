@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/tre"
     android:id="@+id/drawer_layout"
-    tools:context=".FoodActivity">
+    tools:context=".AnalysisActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -30,37 +30,56 @@
                 android:background="@drawable/tre"
                 >
 
+
                 <include layout="@layout/main_toolbar" />
+
+
+
+                <Button
+                    android:id="@+id/calthis"
+                    android:layout_width="161dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="123dp"
+                    android:layout_marginLeft="123dp"
+                    android:layout_marginEnd="127dp"
+                    android:layout_marginBottom="332dp"
+                    android:background="#1732e7"
+                    android:text="Calories for this food"
+                    android:textColor="#ffffff"
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/calories"
                     android:layout_width="match_parent"
-                    android:layout_height="92dp"
+                    android:layout_height="57dp"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="147dp"
+                    android:layout_marginBottom="124dp"
                     android:gravity="center"
                     android:text=""
                     android:textColor="#e4260e"
-                    android:textSize="30sp" />
-
-
+                    android:textSize="18dp" />
 
                 <EditText
                     android:id="@+id/etquantity"
                     android:layout_width="148dp"
                     android:layout_height="wrap_content"
-                    android:layout_above="@+id/calthis"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
-                    android:layout_marginStart="17dp"
-                    android:layout_marginLeft="17dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="-2dp"
+                    android:layout_marginLeft="-2dp"
+                    android:layout_marginBottom="485dp"
                     android:ems="10"
                     android:hint="Quantity"
                     android:inputType="number"
                     android:textColor="#ff0000"
                     android:textColorHint="#4888A5"
                     android:textSize="25sp" />
+
 
                 <TextView
                     android:id="@+id/Food_cal"
@@ -83,107 +102,124 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="30sp" />
 
-                <Button
-                    android:id="@+id/calthis"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="296dp"
-                    android:background="#1732e7"
-                    android:textSize="14dp"
-                    android:text="Calories for this food"
-                    android:textColor="#ffffff" />
 
                 <Button
                     android:id="@+id/calculate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_above="@+id/calories"
-                    android:layout_marginStart="51dp"
-                    android:layout_marginLeft="51dp"
-                    android:layout_marginBottom="58dp"
-                    android:layout_toEndOf="@+id/calthis"
-                    android:layout_toRightOf="@+id/calthis"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="120dp"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginEnd="125dp"
+                    android:layout_marginBottom="267dp"
                     android:background="#1732e7"
-                    android:text="total Calories"
+                    android:text="Lunch"
+                    android:textColor="#ffffff"
+                    android:textSize="14dp" />
+
+                <Button
+                    android:id="@+id/lunch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="117dp"
+                    android:layout_marginLeft="117dp"
+                    android:layout_marginTop="558dp"
+                    android:layout_marginEnd="128dp"
+                    android:layout_marginBottom="205dp"
+                    android:background="#1732e7"
+                    android:text="Dinner"
                     android:textColor="#ffffff"
                     android:textSize="14dp" />
 
                 <Spinner
                     android:id="@+id/spinner"
-                    android:layout_width="206dp"
-                    android:layout_height="35dp"
-                    android:layout_alignTop="@+id/textView"
-                    android:layout_toEndOf="@+id/calthis"
-                    android:layout_toRightOf="@+id/calthis" />
+                    android:layout_width="237dp"
+                    android:layout_height="55dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="148dp"
+                    android:layout_marginTop="252dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginBottom="503dp" />
 
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_above="@+id/etquantity"
+                    android:layout_alignEnd="@+id/add"
+                    android:layout_alignRight="@+id/add"
+                    android:layout_marginBottom="16dp"
                     android:text="  Food Item"
                     android:textColor="#020e51"
                     android:textSize="25sp"
-                    android:layout_above="@+id/etquantity"
-                    android:layout_alignRight="@+id/add"
-                    android:layout_alignEnd="@+id/add"
-                    android:layout_marginBottom="13dp" />
+                    tools:ignore="UnknownId" />
 
                 <TextView
                     android:id="@+id/textView2"
-                    android:layout_width="260dp"
-                    android:layout_height="53dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="39dp"
                     android:layout_alignBaseline="@+id/etquantity"
                     android:layout_alignStart="@+id/calculate"
                     android:layout_alignLeft="@+id/calculate"
                     android:layout_alignBottom="@+id/etquantity"
-                    android:layout_marginStart="-50dp"
-                    android:layout_marginLeft="-50dp"
-                    android:layout_marginBottom="15dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="-9dp"
+                    android:layout_marginLeft="-9dp"
+                    android:layout_marginTop="316dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="-11dp"
                     android:paddingLeft="16sp"
                     android:paddingRight="16sp"
                     android:text="*Measure considered accordingly"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="10sp" />
+                    android:textSize="10sp"
+                    tools:ignore="UnknownId" />
+
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="177dp"
-                    android:layout_height="183dp"
+                    android:layout_width="168dp"
+                    android:layout_height="145dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginStart="107dp"
-                    android:layout_marginLeft="107dp"
-                    android:layout_marginTop="134dp"
-                    android:layout_marginEnd="125dp"
-                    android:layout_marginRight="125dp"
-                    android:layout_marginBottom="489dp"
+                    android:layout_marginStart="128dp"
+                    android:layout_marginLeft="128dp"
+                    android:layout_marginTop="119dp"
+                    android:layout_marginEnd="115dp"
+                    android:layout_marginRight="115dp"
+                    android:layout_marginBottom="547dp"
                     app:srcCompat="@drawable/icon" />
 
                 <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="373dp"
-                    android:layout_height="46dp"
-                    android:layout_above="@+id/calories"
+                    android:id="@+id/textView3"
+                    android:layout_width="372dp"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginStart="7dp"
-                    android:layout_marginTop="515dp"
-                    android:layout_marginEnd="31dp"
-                    android:layout_marginBottom="6dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="407dp"
                     android:gravity="center"
-                    android:text='Please select the "CALORIES FOR THIS FOOD " for eaten items and  then choose "TOTAL CALORIES"'
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="10sp" />
+                    android:text="Please enter eaten food ,choose 'calories for food' and finally enter 'LUNCH/DINNER'"
+                    android:textColor="@color/colorPrimaryDark" />
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

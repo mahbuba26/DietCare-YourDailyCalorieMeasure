@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:gravity="center"
 
-    tools:context=".InviteActivity">
+    tools:context=".GoActivity">
 
     <ScrollView
         android:layout_width="match_parent"

@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
@@ -70,12 +71,9 @@ public class GoActivity extends AppCompatActivity {
 
         //  setListeners();
         String id = reference.push().getKey();
-        int y = (int) AnalysisActivity.getValue();
         long x = new Date().getTime();
-        Toast.makeText(GoActivity.this, "The value of y is" + y, Toast.LENGTH_SHORT).show();
-        Pointvalue pointvalue = new Pointvalue(x, y);
-        // reference.child(userID).child(id).setValue(pointvalue);
-        reference.child(id).setValue(pointvalue);
+        int y = (int) AnalysisActivity.getValue();
+
 
 
 
