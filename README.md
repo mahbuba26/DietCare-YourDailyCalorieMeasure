@@ -1,10 +1,10 @@
-# An online food ordering app 
+# A calorie measurement app
 
 
 ## Features are: 
-1. Admin Panel
-2. Customer Order and check list
-3. Rider details
+1. Home(BMI/BMR)
+2. Measure Calorie
+3. Food Suggestion
 
 ## Prerequisites
 * Installation of Android Studio
